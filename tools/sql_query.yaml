@@ -1,34 +1,147 @@
 identity:
-  name: "ashley_plugin_db_query"
-  author: "henson"
+  name: sql_query
+  author: elingembkq222
   label:
-    en_US: "ashley_plugin_db_query"
-    zh_Hans: "ashley_plugin_db_query"
-    pt_BR: "ashley_plugin_db_query"
-    ja_JP: "ashley_plugin_db_query"
+    en_US: SQL Query
+    zh_Hans: SQL查询
 description:
   human:
-    en_US: "Db Query"
-    zh_Hans: "Db Query"
-    pt_BR: "Db Query"
-    ja_JP: "Db Query"
-  llm: "Db Query"
+    en_US: A tool for executing SQL statements on the specified database.
+    zh_Hans: 在指定数据库上执行 SQL 查询。
+  llm: A tool for executing SQL queries based on database connection parameters.
+extra:
+  python:
+    source: tools/sql_query.py
 parameters:
-  - name: query
+  - name: db_type
+    type: select
+    required: true
+    options:
+      - value: mysql
+        label:
+          en_US: MySQL
+          zh_Hans: MySQL
+      - value: oracle
+        label:
+          en_US: Oracle
+          zh_Hans: Oracle
+      - value: oracle11g
+        label:
+          en_US: Oracle11g
+          zh_Hans: Oracle11g
+      - value: postgresql
+        label:
+          en_US: PostgreSQL
+          zh_Hans: PostgreSQL
+      - value: mssql
+        label:
+          en_US: Microsoft SQL Server
+          zh_Hans: Microsoft SQL Server
+    default: mysql
+    label:
+      en_US: Database Type
+      zh_Hans: 数据库类型
+    human_description:
+      en_US: Select the database type (mysql, oracle, oracle11g, postgresql, or mssql).
+      zh_Hans: 选择数据库类型（mysql、oracle、oracle11g、postgresql或mssql）。
+    form: llm
+
+  - name: db_host
+    type: string
+    required: true
+    default: localhost
+    label:
+      en_US: Database Host
+      zh_Hans: 数据库地址
+    human_description:
+      en_US: Database hostname or IP address.
+      zh_Hans: 数据库主机名或IP地址。
+    form: llm
+
+  - name: db_port
+    type: number
+    required: false
+    label:
+      en_US: Port
+      zh_Hans: 端口
+    human_description:
+      en_US: Database port number.
+      zh_Hans: 数据库端口号。
+    form: llm
+
+  - name: db_username
     type: string
     required: true
     label:
-      en_US: Query string
-      zh_Hans: 查询语句
-      pt_BR: Query string
-      ja_JP: クエリ文字列
+      en_US: Username
+      zh_Hans: 用户名
     human_description:
-      en_US: "Db Query"
-      zh_Hans: "Db Query"
-      pt_BR: "Db Query"
-      ja_JP: "Db Query"
-    llm_description: "Db Query"
+      en_US: Database username.
+      zh_Hans: 数据库用户名。
     form: llm
-extra:
-  python:
-    source: tools/ashley_plugin_db_query.py
+
+  - name: db_password
+    type: secret-input
+    required: true
+    label:
+      en_US: Password
+      zh_Hans: 密码
+    human_description:
+      en_US: Database password (original string, not URL encoded).
+      zh_Hans: 数据库密码（原始字符串，非URL编码字符串）。
+    form: llm
+
+  - name: db_name
+    type: string
+    required: false
+    label:
+      en_US: Database Name
+      zh_Hans: 数据库名称
+    human_description:
+      en_US: Database name or schema name.
+      zh_Hans: 数据库或架构名称。
+    form: llm
+
+  - name: db_properties
+    type: string
+    required: false
+    label:
+      en_US: Database Properties
+      zh_Hans: 数据库属性
+    human_description:
+      en_US: Optional database connection properties (e.g., ssl_cipher=/path/to/crt).
+      zh_Hans: 可选数据库连接属性（例如 ssl_cipher=/path/to/crt）。
+    form: llm
+
+  - name: query_sql
+    type: string
+    required: true
+    label:
+      en_US: SQL Query
+      zh_Hans: SQL 查询语句
+    human_description:
+      en_US: Example: select * from user_table limit 10;
+      zh_Hans: 示例：select * from user_table limit 10;
+    llm_description: 'SQL query statement, for example: select * from user_table limit 10;'
+    form: llm
+
+  - name: output_format
+    type: select
+    required: true
+    label:
+      en_US: Output Format
+      zh_Hans: 输出格式
+    human_description:
+      en_US: Choose the output format, JSON or Markdown.
+      zh_Hans: 选择输出格式，可为 JSON 或 Markdown。
+    options:
+      - value: markdown
+        label:
+          en_US: Markdown
+          zh_Hans: Markdown
+      - value: json
+        label:
+          en_US: JSON
+          zh_Hans: JSON
+    default: json
+    form: llm
