@@ -120,7 +120,7 @@ parameters:
       en_US: SQL Query
       zh_Hans: SQL 查询语句
     human_description:
-      en_US: Example: select * from user_table limit 10;
+      en_US: Example:select * from user_table limit 10;
       zh_Hans: 示例：select * from user_table limit 10;
     llm_description: 'SQL query statement, for example: select * from user_table limit 10;'
     form: llm
