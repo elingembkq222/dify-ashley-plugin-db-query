@@ -1,0 +1,15 @@
+identity:
+  name: db_query
+  author: henson
+  label:
+    en_US: Database Query
+    zh_Hans: 数据库查询
+description:
+  human:
+    en_US: Database Query Provider
+    zh_Hans: 数据库查询提供者
+extra:
+  python:
+    source: provider/db_query.py
+tools:
+  - tools/sql_query.yaml

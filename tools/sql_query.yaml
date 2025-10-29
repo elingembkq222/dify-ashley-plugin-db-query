@@ -1,0 +1,34 @@
+identity:
+  name: "ashley_plugin_db_query"
+  author: "henson"
+  label:
+    en_US: "ashley_plugin_db_query"
+    zh_Hans: "ashley_plugin_db_query"
+    pt_BR: "ashley_plugin_db_query"
+    ja_JP: "ashley_plugin_db_query"
+description:
+  human:
+    en_US: "Db Query"
+    zh_Hans: "Db Query"
+    pt_BR: "Db Query"
+    ja_JP: "Db Query"
+  llm: "Db Query"
+parameters:
+  - name: query
+    type: string
+    required: true
+    label:
+      en_US: Query string
+      zh_Hans: 查询语句
+      pt_BR: Query string
+      ja_JP: クエリ文字列
+    human_description:
+      en_US: "Db Query"
+      zh_Hans: "Db Query"
+      pt_BR: "Db Query"
+      ja_JP: "Db Query"
+    llm_description: "Db Query"
+    form: llm
+extra:
+  python:
+    source: tools/ashley_plugin_db_query.py
