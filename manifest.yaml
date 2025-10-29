@@ -1,4 +1,4 @@
-version: 0.0.1
+version: 0.0.2
 type: plugin
 author: elingembkq222
 name: ashley_plugin_db_query
@@ -36,6 +36,5 @@ meta:
     entrypoint: main
   minimum_dify_version: null
 created_at: 2025-10-29T11:00:09.354734+08:00
-version: 0.0.2
 privacy: PRIVACY.md
 verified: false
