@@ -1,6 +1,6 @@
 version: 0.0.1
 type: plugin
-author: henson
+author: elingembkq222
 name: ashley_plugin_db_query
 label:
   en_US: Database Query Utils.
