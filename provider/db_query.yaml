@@ -7,7 +7,7 @@ identity:
   description:
     en_US: Database Query Provider for executing SQL-related tools.
     zh_Hans: 用于执行 SQL 相关工具的数据库查询提供者。
-  icon: _assets/icon.svg
+  icon: icon.svg
 
 extra:
   python:

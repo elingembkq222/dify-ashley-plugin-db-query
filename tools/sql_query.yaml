@@ -4,7 +4,7 @@ identity:
   label:
     en_US: SQL Query
     zh_Hans: SQL 查询
-  icon: _assets/icon.svg
+  icon: icon.svg
 
 description:
   human:

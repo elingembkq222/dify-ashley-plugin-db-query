@@ -8,8 +8,8 @@ label:
 description:
   en_US: Db Database Query Utils
   zh_Hans: 数据库查询工具
-icon: _assets/icon.svg
-icon_dark: _assets/icon-dark.svg
+icon: icon.svg
+icon_dark: icon-dark.svg
 resource:
   memory: 268435456
   permission:
