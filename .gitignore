@@ -177,3 +177,6 @@ cython_debug/
 
 # test
 .test_db_pool.py
+
+# 环境
+venv312/
