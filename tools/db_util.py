@@ -78,18 +78,34 @@ class DbUtil:
     def run_query(cls, query_sql: str, **config) -> list[dict]:
         engine = cls.get_engine(**config)
         query_sql = query_sql.replace('%', '%%')
-        with engine.connect() as conn:
-            result = conn.execute(text(query_sql))
-            rows = [dict(row._mapping) for row in result]
-        for record in rows:
-            for key, val in record.items():
-                if isinstance(val, datetime.datetime):
-                    record[key] = val.strftime('%Y-%m-%d %H:%M:%S')
-                elif isinstance(val, datetime.date):
-                    record[key] = val.strftime('%Y-%m-%d')
-                elif isinstance(val, UUID):
-                    record[key] = str(val)
-        return rows
+        logging.info(f"🔍 执行 SQL: {query_sql}")
+        print(f"🔍 执行 SQL: {query_sql}")
+        try:
+            with engine.connect() as conn:
+                result = conn.execute(text(query_sql))
+                rows = [dict(row._mapping) for row in result]
+                print(f"📊 查询结果行数: {len(rows)}")
+                logging.info(f"📊 查询结果行数: {len(rows)}")
+                
+                for record in rows:
+                    for key, val in record.items():
+                        if isinstance(val, datetime.datetime):
+                            record[key] = val.strftime('%Y-%m-%d %H:%M:%S')
+                        elif isinstance(val, datetime.date):
+                            record[key] = val.strftime('%Y-%m-%d')
+                        elif isinstance(val, UUID):
+                            record[key] = str(val)
+                
+                print(f"📤 返回数据行数: {len(rows)}")
+                if rows:
+                    print(f"📄 第一行数据示例: {rows[0]}")
+                return rows
+        except Exception as e:
+            print(f"❌ 查询执行失败: {str(e)}")
+            logging.error(f"❌ 查询执行失败: {str(e)}")
+            import traceback
+            traceback.print_exc()
+            raise
 
     @classmethod
     def show_cache(cls):

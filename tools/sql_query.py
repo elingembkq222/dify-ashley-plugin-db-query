@@ -68,6 +68,8 @@ class SqlQueryTool(Tool):
             )
 
             logging.info(f"✅ Query completed, rows={len(rows)}")
+            print(f"✅ Query completed, rows={len(rows)}")
+            print(f"✅ Query result sample: {rows[:1] if rows else 'No data'}")
 
             # ✅ 没有结果
             if not rows:
@@ -79,11 +81,20 @@ class SqlQueryTool(Tool):
 
             # ✅ 格式化输出
             if output_format == "json":
-                yield self.create_json_message(rows)
+                logging.info(f"📤 Returning JSON data: {len(rows)} rows")
+                print(f"📤 Returning JSON data: {len(rows)} rows")
+                # 先返回一个文本消息，再返回JSON数据
+                yield self.create_text_message(f"查询成功，返回 {len(rows)} 行数据")
+                yield self.create_json_message({"data": rows, "count": len(rows)})
             else:
                 text = tabulate.tabulate(rows, headers="keys", tablefmt="github", floatfmt="")
-                yield self.create_text_message(text)
+                logging.info(f"📤 Returning table data: {len(rows)} rows")
+                print(f"📤 Returning table data: {len(rows)} rows")
+                yield self.create_text_message(f"查询成功，返回 {len(rows)} 行数据\n\n{text}")
 
         except Exception as e:
             logging.exception("❌ SQL query execution failed: %s", str(e))
+            print(f"❌ SQL query execution failed: {str(e)}")
+            import traceback
+            traceback.print_exc()
             yield self.create_text_message(f"❌ Query failed: {str(e)}")

@@ -8,8 +8,10 @@
 
 
 ### HENSON 本地
-source venv311/bin/activate
+source venv312/bin/activate
 python main.py
+
+dify plugin package . -o test.difypkg
 
 
 
