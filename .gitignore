@@ -180,3 +180,6 @@ cython_debug/
 
 # 环境
 venv312/
+
+# 
+*.difypkg
