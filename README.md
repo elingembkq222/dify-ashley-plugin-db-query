@@ -7,4 +7,9 @@
 ### Description
 
 
+### HENSON 本地
+source venv311/bin/activate
+python main.py
+
+
 
