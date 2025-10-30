@@ -3,15 +3,16 @@ identity:
   author: elingembkq222
   label:
     en_US: SQL Query
-    zh_Hans: SQL查询
-description:
-  human:
-    en_US: A tool for executing SQL statements on the specified database.
-    zh_Hans: 在指定数据库上执行 SQL 查询。
-  llm: A tool for executing SQL queries based on database connection parameters.
+    zh_Hans: SQL 查询
+  description:
+    en_US: Execute SQL statements safely within Dify workflows.
+    zh_Hans: 在 Dify 工作流中安全执行 SQL 语句。
+  icon: _assets/icon.svg
+
 extra:
   python:
     source: tools/sql_query.py
+
 parameters:
   - name: db_type
     type: select
@@ -27,8 +28,8 @@ parameters:
           zh_Hans: Oracle
       - value: oracle11g
         label:
-          en_US: Oracle11g
-          zh_Hans: Oracle11g
+          en_US: Oracle 11g
+          zh_Hans: Oracle 11g
       - value: postgresql
         label:
           en_US: PostgreSQL
@@ -42,8 +43,8 @@ parameters:
       en_US: Database Type
       zh_Hans: 数据库类型
     human_description:
-      en_US: Select the database type (mysql, oracle, oracle11g, postgresql, or mssql).
-      zh_Hans: 选择数据库类型（mysql、oracle、oracle11g、postgresql或mssql）。
+      en_US: Choose the type of database you want to query.
+      zh_Hans: 选择要查询的数据库类型。
     form: llm
 
   - name: db_host
@@ -54,20 +55,20 @@ parameters:
       en_US: Database Host
       zh_Hans: 数据库地址
     human_description:
-      en_US: Database hostname or IP address.
-      zh_Hans: 数据库主机名或IP地址。
-    form: llm
+      en_US: The host name or IP address of the database.
+      zh_Hans: 数据库主机名或 IP 地址。
+    form: form
 
   - name: db_port
     type: number
     required: false
     label:
-      en_US: Port
-      zh_Hans: 端口
+      en_US: Database Port
+      zh_Hans: 数据库端口
     human_description:
-      en_US: Database port number.
-      zh_Hans: 数据库端口号。
-    form: llm
+      en_US: The port number used to connect to the database.
+      zh_Hans: 数据库连接端口号。
+    form: form
 
   - name: db_username
     type: string
@@ -76,9 +77,9 @@ parameters:
       en_US: Username
       zh_Hans: 用户名
     human_description:
-      en_US: Database username.
-      zh_Hans: 数据库用户名。
-    form: llm
+      en_US: The username used for connecting to the database.
+      zh_Hans: 数据库连接用户名。
+    form: form
 
   - name: db_password
     type: secret-input
@@ -87,9 +88,9 @@ parameters:
       en_US: Password
       zh_Hans: 密码
     human_description:
-      en_US: Database password (original string, not URL encoded).
-      zh_Hans: 数据库密码（原始字符串，非URL编码字符串）。
-    form: llm
+      en_US: The password used for database authentication.
+      zh_Hans: 数据库连接密码。
+    form: form
 
   - name: db_name
     type: string
@@ -98,20 +99,20 @@ parameters:
       en_US: Database Name
       zh_Hans: 数据库名称
     human_description:
-      en_US: Database name or schema name.
-      zh_Hans: 数据库或架构名称。
-    form: llm
+      en_US: The target database or schema name.
+      zh_Hans: 要连接的数据库或架构名称。
+    form: form
 
   - name: db_properties
     type: string
     required: false
     label:
-      en_US: Database Properties
-      zh_Hans: 数据库属性
+      en_US: Connection Properties
+      zh_Hans: 连接属性
     human_description:
-      en_US: Optional database connection properties (e.g., ssl_cipher=/path/to/crt).
-      zh_Hans: 可选数据库连接属性（例如 ssl_cipher=/path/to/crt）。
-    form: llm
+      en_US: Optional properties for database connection (e.g., ssl=true).
+      zh_Hans: 数据库连接的可选属性（如 ssl=true）。
+    form: form
 
   - name: query_sql
     type: string
@@ -120,9 +121,9 @@ parameters:
       en_US: SQL Query
       zh_Hans: SQL 查询语句
     human_description:
-      en_US: Example:select * from user_table limit 10;
-      zh_Hans: 示例：select * from user_table limit 10;
-    llm_description: 'SQL query statement, for example: select * from user_table limit 10;'
+      en_US: "Example: select * from users limit 10;"
+      zh_Hans: "示例：select * from users limit 10;"
+    llm_description: "SQL query statement, for example: select * from users limit 10;"
     form: llm
 
   - name: output_format
@@ -131,17 +132,17 @@ parameters:
     label:
       en_US: Output Format
       zh_Hans: 输出格式
-    human_description:
-      en_US: Choose the output format, JSON or Markdown.
-      zh_Hans: 选择输出格式，可为 JSON 或 Markdown。
     options:
-      - value: markdown
-        label:
-          en_US: Markdown
-          zh_Hans: Markdown
       - value: json
         label:
           en_US: JSON
           zh_Hans: JSON
+      - value: markdown
+        label:
+          en_US: Markdown
+          zh_Hans: Markdown
     default: json
+    human_description:
+      en_US: Choose how you want the query results to be formatted.
+      zh_Hans: 选择查询结果的输出格式。
     form: llm

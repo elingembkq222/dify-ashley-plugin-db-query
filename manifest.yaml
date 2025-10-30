@@ -3,17 +3,13 @@ type: plugin
 author: elingembkq222
 name: ashley_plugin_db_query
 label:
-  en_US: Database Query Utils.
-  ja_JP: Database Query Utils.
-  zh_Hans: 数据库查询工具。
-  pt_BR: Database Query Utils.
+  en_US: Database Query Utils
+  zh_Hans: 数据库查询工具
 description:
-  en_US: Db Database Query Utils.
-  ja_JP: Database Query Utils.
-  zh_Hans: Db Query
-  pt_BR: Db Query
-icon: icon.svg
-icon_dark: icon-dark.svg
+  en_US: Db Database Query Utils
+  zh_Hans: 数据库查询工具
+icon: _assets/icon.svg
+icon_dark: _assets/icon-dark.svg
 resource:
   memory: 268435456
   permission:
@@ -23,18 +19,15 @@ resource:
       enabled: true
       size: 1048576
 plugins:
-  tools:
-    - provider/db_query.yaml
+  tools: ["provider/db_query.yaml"]
 meta:
   version: 0.0.1
-  arch:
-    - amd64
-    - arm64
+  arch: [amd64, arm64]
   runner:
     language: python
     version: "3.12"
     entrypoint: main
-  minimum_dify_version: null
-created_at: 2025-10-29T11:00:09.354734+08:00
+  minimum_dify_version: 0.6.0
 privacy: PRIVACY.md
 verified: false
+created_at: 2025-10-29T12:00:00+08:00

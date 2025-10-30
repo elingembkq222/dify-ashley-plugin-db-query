@@ -4,12 +4,14 @@ identity:
   label:
     en_US: Database Query
     zh_Hans: 数据库查询
-description:
-  human:
-    en_US: Database Query Provider
-    zh_Hans: 数据库查询提供者
+  description:
+    en_US: Database Query Provider for executing SQL-related tools.
+    zh_Hans: 用于执行 SQL 相关工具的数据库查询提供者。
+  icon: _assets/icon.svg
+
 extra:
   python:
     source: provider/db_query.py
+
 tools:
   - tools/sql_query.yaml
