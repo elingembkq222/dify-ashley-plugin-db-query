@@ -4,10 +4,13 @@ identity:
   label:
     en_US: SQL Query
     zh_Hans: SQL 查询
-  description:
+  icon: _assets/icon.svg
+
+description:
+  human:
     en_US: Execute SQL statements safely within Dify workflows.
     zh_Hans: 在 Dify 工作流中安全执行 SQL 语句。
-  icon: _assets/icon.svg
+  llm: Execute SQL statements safely within Dify workflows.
 
 extra:
   python:
