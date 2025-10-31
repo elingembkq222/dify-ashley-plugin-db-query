@@ -26,24 +26,6 @@
 
 ---
 
-## 📁 项目结构
-
-```
-ashley_plugin_db_query/
-├── provider/
-│   ├── db_query.py              # 核心逻辑：数据库查询 Provider
-│
-├── tools/
-│   ├── sql_query.yaml           # 工具定义文件（描述 Tool 的参数与调用方式）
-│
-├── main.py                      # 插件入口（注册 Provider / 启动服务）
-├── requirements.txt             # 依赖包
-├── README.md                    # 插件说明文件（即本文件）
-└── venv312/                     # 本地虚拟环境 (可选)
-```
-
----
-
 ## 🚀 本地开发与测试
 
 ### 1️⃣ 启动虚拟环境
@@ -132,36 +114,6 @@ git push origin v1.0.0
 ```
 
 > 建议每次发布前更新版本号，并同步推送标签。
-
----
-
-## 🧰 常见问题
-
-| 问题 | 解决方案 |
-|------|------------|
-| 启动时报错 `ModuleNotFoundError` | 检查虚拟环境依赖是否安装：`pip install -r requirements.txt` |
-| 打包时提示 `tool_provider.yaml not found` | 确保 `sql_query.yaml` 位于 `tools/` 目录 |
-| 插件导入后未显示工具 | 检查 `main.py` 中是否正确注册 Provider |
-
----
-
-## 🧑‍💻 开发者信息
-
-| 字段 | 值 |
-|------|----|
-| Author | Henson Cheng |
-| Email | （可选填写） |
-| Repo | private / GitHub / internal |
-| License | MIT |
-
----
-
-## 🧭 未来计划
-
-- 支持多数据库连接配置（通过环境变量或 YAML）
-- 增强 SQL 安全审查（防止危险操作）
-- 增加分页与表结构元数据工具
-- 与 Dify Workflows 深度集成，实现 Agent 数据问答
 
 ---
 
